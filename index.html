@@ -7,6 +7,7 @@
     <meta name="description"
         content="Quiz de Prevenção de Lesão por Pressão para profissionais de enfermagem. Teste seus conhecimentos baseados nas melhores evidências científicas.">
     <title>Quiz LP — Prevenção de Lesão por Pressão</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -82,14 +83,6 @@
                     <label for="cp-nome">Nome completo</label>
                     <input type="text" id="cp-nome" placeholder="Maria da Silva" required>
                 </div>
-                <div class="form-group">
-                    <label for="cp-coren">COREN</label>
-                    <input type="text" id="cp-coren" placeholder="COREN-SP 123456" required>
-                </div>
-                <div class="form-group">
-                    <label for="cp-setor">Setor / Unidade</label>
-                    <input type="text" id="cp-setor" placeholder="UTI Adulto" required>
-                </div>
                 <button type="submit" class="btn-primary" id="btn-complete-profile">Salvar e Continuar</button>
             </form>
 
@@ -98,14 +91,6 @@
                 <div class="form-group">
                     <label for="reg-nome">Nome completo</label>
                     <input type="text" id="reg-nome" placeholder="Maria da Silva" required>
-                </div>
-                <div class="form-group">
-                    <label for="reg-coren">COREN</label>
-                    <input type="text" id="reg-coren" placeholder="COREN-SP 123456" required>
-                </div>
-                <div class="form-group">
-                    <label for="reg-setor">Setor / Unidade</label>
-                    <input type="text" id="reg-setor" placeholder="UTI Adulto" required>
                 </div>
                 <div class="form-group">
                     <label for="reg-email">E-mail</label>
@@ -167,8 +152,15 @@
                     </svg>
                 </div>
                 <h2>Prevenção de Lesão por Pressão</h2>
-                <p>Teste seus conhecimentos com <strong>10 questões</strong> baseadas nas melhores evidências
-                    científicas. Ao final, você receberá feedback detalhado com explicações de cada alternativa.</p>
+                <div class="intro-text">
+                    <p><strong>Bem-vindos, Enfermeiros do Hospital Dr. Carmino Caricchio - Tatuapé!</strong></p>
+                    <p>Este quiz avançado sobre prevenção de lesão por pressão (LPP) baseia-se nas diretrizes internacionais atualizadas (EPUAP/NPIAP/PPPIA 2019 e revisões nacionais), adaptadas à realidade de um hospital geral como o nosso, com foco em pacientes de alta vulnerabilidade em alas clínicas, UTI e geriatria.</p>
+                    <p><strong>Objetivos Práticos:</strong></p>
+                    <p>Teste seu conhecimento em protocolos institucionais de avaliação de risco (Braden), escolha de superfícies de suporte alternadas, manejo nutricional e mobilização precoce, conforme evidências de estudos randomizados e boas práticas do COFEN/ANVISA. Cada questão inclui explicações detalhadas sobre erros das alternativas incorretas, promovendo decisões seguras para reduzir incidência de LPP em nossa unidade.</p>
+                    <p><strong>Dicas para o Time:</strong></p>
+                    <p>Realize o quiz individualmente ou em equipe durante rodadas de educação continuada. Resultados acima de 80% reforçam adesão aos nossos fluxos de prevenção.</p>
+                    <p class="intro-signature">Comissão de Cuidados com a Pele<br>Elaborado por Pedro Antônio Silvestre Tescaro</p>
+                </div>
                 <div class="welcome-stats">
                     <div class="stat-box">
                         <span class="stat-number">10</span>
@@ -303,8 +295,6 @@
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>COREN</th>
-                                <th>Setor</th>
                                 <th>Acertos</th>
                                 <th>Nota</th>
                                 <th>Data</th>

@@ -115,12 +115,10 @@ function switchTab(tab) {
 $('form-register').addEventListener('submit', async (e) => {
     e.preventDefault();
     const nome = $('reg-nome').value.trim();
-    const coren = $('reg-coren').value.trim();
-    const setor = $('reg-setor').value.trim();
     const email = $('reg-email').value.trim().toLowerCase();
     const senha = $('reg-senha').value;
 
-    if (!nome || !coren || !setor || !email || !senha) {
+    if (!nome || !email || !senha) {
         toast('Preencha todos os campos.', 'error'); return;
     }
     if (senha.length < 6) {
@@ -133,7 +131,7 @@ $('form-register').addEventListener('submit', async (e) => {
     try {
         const cred = await auth.createUserWithEmailAndPassword(email, senha);
         await db.collection('users').doc(cred.user.uid).set({
-            nome, coren, setor, email,
+            nome, email,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
         toast('Conta criada com sucesso!', 'success');
@@ -201,10 +199,8 @@ $('form-complete-profile').addEventListener('submit', async (e) => {
     if (!pendingGoogleUser) return;
 
     const nome = $('cp-nome').value.trim();
-    const coren = $('cp-coren').value.trim();
-    const setor = $('cp-setor').value.trim();
 
-    if (!nome || !coren || !setor) {
+    if (!nome) {
         toast('Preencha todos os campos.', 'error'); return;
     }
 
@@ -213,12 +209,12 @@ $('form-complete-profile').addEventListener('submit', async (e) => {
 
     try {
         await db.collection('users').doc(pendingGoogleUser.uid).set({
-            nome, coren, setor,
+            nome,
             email: pendingGoogleUser.email,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
         currentUser = pendingGoogleUser;
-        currentUserProfile = { nome, coren, setor, email: pendingGoogleUser.email };
+        currentUserProfile = { nome, email: pendingGoogleUser.email };
         pendingGoogleUser = null;
         $('user-display').textContent = nome.split(' ')[0];
         document.querySelector('.auth-tabs').style.display = '';
@@ -328,8 +324,6 @@ async function finishQuiz() {
             userId: currentUser.uid,
             email: currentUserProfile.email,
             nome: currentUserProfile.nome,
-            coren: currentUserProfile.coren,
-            setor: currentUserProfile.setor,
             hits,
             total: QUESTIONS.length,
             pct,
@@ -461,8 +455,6 @@ async function renderAdmin() {
 
             tr.innerHTML = `
                 <td>${r.nome || '--'}</td>
-                <td>${r.coren || '--'}</td>
-                <td>${r.setor || '--'}</td>
                 <td>${r.hits}/${r.total}</td>
                 <td><span class="score-pill ${pillClass}">${r.pct}%</span></td>
                 <td>${dateStr}</td>`;
